@@ -28,6 +28,7 @@ Open Terminal and enter the following commands to create a build directory and r
 ```bash
 cd <repository>
 mkdir build
+cd build
 cmake ..
 cmake --build .
 ```
