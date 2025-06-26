@@ -37,3 +37,4 @@ Then, to run the program
 ```bash
 ./cmake_project
 ```
+the program creates a simple transformation matrix and allows you to translate, rotate, and scale it
