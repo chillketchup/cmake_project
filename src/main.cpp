@@ -43,7 +43,7 @@ int main() {
             cout << "enter x y z values to translate by, seperated by a single space: ";
             cin >> x >> y >> z;
             
-            translate(matrix, vec3(x, y, z));
+            matrix = translate(matrix, vec3(x, y, z));
         }
         else if(command == "rotate"){
             float rot; char axis;
@@ -55,9 +55,9 @@ int main() {
             
             axis = tolower(axis);
             
-            if(axis == 'x') rotate(matrix, radians(rot), vec3(1.0f, 0.0f, 0.0f));
-            else if(axis == 'y') rotate(matrix, radians(rot), vec3(0.0f, 1.0f, 0.0f));
-            else if(axis == 'z') rotate(matrix, radians(rot), vec3(0.0f, 0.0f, 1.0f));
+            if(axis == 'x') matrix = rotate(matrix, radians(rot), vec3(1.0f, 0.0f, 0.0f));
+            else if(axis == 'y') matrix = rotate(matrix, radians(rot), vec3(0.0f, 1.0f, 0.0f));
+            else if(axis == 'z') matrix = rotate(matrix, radians(rot), vec3(0.0f, 0.0f, 1.0f));
             else cout << "invalid axis" << endl;
         }
         else if(command == "scale"){
