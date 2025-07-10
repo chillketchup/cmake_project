@@ -4,7 +4,8 @@ project(cmakeProject VERSION 1.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(cmake_project src/main.cpp)
+add_executable(matrix_transformation src/matrix_transformation.cpp)
+add_executable(matrix_multiplication src/matrix_multiplication.cpp)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -14,4 +15,4 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(glm)
 
-target_link_libraries(cmake_project PRIVATE glm::glm)
+target_link_libraries(matrix_transformation PRIVATE glm::glm)
