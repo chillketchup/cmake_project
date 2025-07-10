@@ -35,6 +35,19 @@ cmake --build .
 
 Then, to run the program
 ```bash
-./cmake_project
+./<program_name>
 ```
-the program creates a simple transformation matrix and allows you to translate, rotate, and scale it
+or run the executables created in the build folder
+
+## Naive vs optimised matrix multiplication function
+The matrix_multiplication.cpp program contains two functions that both do matrix multiplication, but one is optimised to be much faster
+
+average runtime for 512x512 size matrix\
+naive:     0.5696186 seconds\
+optimised: 0.1969296 seconds (**189%** faster)
+
+the naive function uses a 2D vector, where rows are stored seperately in memory. On the other hand, the optimised function uses a 1D array, where all the data is contiguous. This improves cache locality, making data faster to access.
+
+The naive function loops in the order ijk, which iterates through B first by column, then by row. Columns are not sequential in memory, so a new cache line will need to be loaded every time B[k][j] is accessed. The optimised instead loops in the order ikj, which iterates through B first by row, then by column. Rows are sequential in memory, so every cache line contain many useful values, making data access faster.
+
+Additionally, the naive function has to load A[i][k] from memory for every j, but the optimised function only loads A[i*N + k] once for all j.
