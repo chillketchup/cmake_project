@@ -48,6 +48,7 @@ int main(){
         for(int j = 0; j < N; j++){
             v1[i][j] = i+j;
             v2[i][j] = i+j;
+            v3[i][j] = 0;
         }
     }
 
@@ -58,6 +59,7 @@ int main(){
         for(int j = 0; j < N; j++){
             arr1[i*N+j] = i+j;
             arr2[i*N+j] = i+j;
+            arr3[i*N+j] = 0;
         }
     }
 
