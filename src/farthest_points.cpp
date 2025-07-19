@@ -7,7 +7,6 @@
 struct point{double x, y, z;};
 
 std::vector <point> points;
-const int thread_count = 4;
 
 // calculate distance between two points
 double find_distance(point a, point b){
@@ -43,22 +42,29 @@ std::pair <point, point> find_farthest_points(int start, int end){
 }
 
 int main(){
-    /*
     std::string file_name;
+    int thread_count;
 
-    // 
     std::cout << "enter file name (include extension):" << std::endl;
     std::cin >> file_name;
 
+    std::cout << "enter number of threads:" << std::endl;
+    std::cin >> thread_count;
+
     // take input from file
     std::ifstream input_file(file_name);
-    */
+    
+    if(!input_file.is_open(){
+        std::cout << "error opening file, make sure file exists and is in the same directory" << std::endl;
+    }
 
     point p;
 
-    while(std::cin >> p.x >> p.y >> p.z){
+    while(input_file >> p.x >> p.y >> p.z){
         points.push_back(p);
     }
+
+    //split data into chunks
 
     int chunk_size = points.size() / thread_count;
     double farthest_dist = 0;
@@ -68,9 +74,12 @@ int main(){
         int start = i * chunk_size;
         int end = std::min(start + chunk_size, int(points.size()));
 
+        // process seperately
+
         std::pair <point, point> thread_farthest = find_farthest_points(start, end);
         double thread_dist = find_distance(thread_farthest.first, thread_farthest.second);
 
+        // result aggregation 
         if(thread_dist > farthest_dist){
             farthest_dist = thread_dist;
             farthest_points = thread_farthest;
