@@ -46,6 +46,10 @@ average runtime for 512x512 size matrix\
 naive:     0.5696186 seconds\
 optimised: 0.1969296 seconds (**189%** faster)
 
+average runtime for 800x800 size matrix\
+naive:     2.02847 seconds\
+optimised: 0.759335 seconds (**167%** faster)
+
 the naive function uses a 2D vector, where rows are stored seperately in memory. On the other hand, the optimised function uses a 1D array, where all the data is contiguous. This improves cache locality, making data faster to access.
 
 The naive function loops in the order ijk, which iterates through B first by column, then by row. Columns are not sequential in memory, so a new cache line will need to be loaded every time B[k][j] is accessed. The optimised instead loops in the order ikj, which iterates through B first by row, then by column. Rows are sequential in memory, so every cache line contain many useful values, making data access faster.
