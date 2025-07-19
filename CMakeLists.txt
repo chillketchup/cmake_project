@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(matrix_transformation src/matrix_transformation.cpp)
 add_executable(matrix_multiplication src/matrix_multiplication.cpp)
+add_executable(matrix_multiplication src/farthest_points.cpp)
 
 include(FetchContent)
 FetchContent_Declare(
